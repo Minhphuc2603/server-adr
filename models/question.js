@@ -27,6 +27,9 @@ const questionSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Categories',
         required: true,
+    },
+    topic: {
+        type: Number,
     }
 });
 

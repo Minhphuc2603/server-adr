@@ -15,6 +15,17 @@ questionRouter.get('/:category', async (req, res) => {
     }
 });
 
+questionRouter.get('/topic/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const questionsByTopic = await Question.find({ topic: id });
+        res.status(200).json(questionsByTopic);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 questionRouter.post('/', async (req, res) => {
     try {
         const requestData = [
@@ -34,7 +45,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 1
             },
             {
                 "question": "Biển báo hiệu có dạng hình tròn, viền đỏ, nền trắng, trên nền có hình vẽ hoặc chữ số, chữ viết màu đen là loại biển gì dưới đây?",
@@ -57,7 +69,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 1
             },
             {
                 "question": "Biển báo hiệu có dạng tam giác đều, viền đỏ, nền màu vàng, trên nền có hình vẽ màu đen là loại biển gì dưới đây?",
@@ -80,7 +93,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 1
             },
             {
                 "question": "Biển báo hiệu hình tròn, có nền xanh lam, có hình vẽ màu trắng là loại biển gì dưới đây?",
@@ -103,7 +117,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 1
             },
             {
                 "question": "Biển báo hiệu hình chữ nhật hoặc hình vuông hoặc hình mũi tên nền xanh lam là loại biển gì dưới đây?",
@@ -126,7 +141,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 1
             },
             {
                 "question": "Khi gặp hiệu lệnh như dưới đây của cảnh sát giao thông thì người tham gia giao thông phải đi như thế nào là đúng quy tắc giao thông?",
@@ -149,7 +165,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 1
             },
             {
                 "question": "Khi gặp hiệu lệnh như dưới đây của cảnh sát giao thông thì người tham gia giao thông phải đi như thế nào là đúng quy tắc giao thông?",
@@ -172,7 +189,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 1
             },
             {
                 "question": "'Làn đường' là gì?",
@@ -190,7 +208,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 1
             },
             {
                 "question": "Khái niệm “khổ giới hạn đường bộ” được hiểu như thế nào là đúng?",
@@ -208,7 +227,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 1
             },
             {
                 "question": "Trong các khái niệm dưới đây, “dải phân cách” được hiểu như thế nào là đúng?",
@@ -226,7 +246,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 1
             },
             {
                 "question": "“Dải phân cách” trên đường bộ gồm những loại nào?",
@@ -244,7 +265,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 2
             },
             {
                 "question": "Người lái xe được hiểu như thế nào trong các khái niệm dưới đây",
@@ -262,7 +284,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 2
             },
             {
                 "question": "Đường mà trên đó phương tiện tham gia giao thông được các phương tiện giao thông được các phương tiện giao thông đến từ hướng khác nhường đường khi qua nơi đường giao nhau, được cắm biển báo hiệu đường ưu tiên là loại đường gì?",
@@ -284,7 +307,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 2
             },
             {
                 "question": "Khai niệm “phương tiện giao thông cơ giới đường bộ” được hiểu thế nào là đúng?",
@@ -298,7 +322,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 2
             },
             {
                 "question": "Khái niệm “phương tiện giao thông thô sơ đường bộ” được hiểu thế nào là đúng?",
@@ -312,7 +337,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 2
             },
             {
                 "question": "“ Phương tiện tham gia giao thông đường bộ” gồm những loại nào?",
@@ -330,7 +356,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 2
             },
             {
                 "question": "“Người tham gia giao thông đường bộ” Gồm những đối tượng nào?",
@@ -348,7 +375,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 2
             },
             {
                 "question": "“Người điều khiển phương tiện tham gia giao thông đường bộ” gồm những đối tượng nào dưới đây?",
@@ -366,7 +394,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 2
             },
             {
                 "question": "Khai niệm “người điều khiển giao thông” được hiểu như thế nào đúng?",
@@ -384,7 +413,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 2
             },
             {
                 "question": "Trong các khái niệm dưới đây khái niệm “dừng xe” được hiểu như thế nào là đúng?",
@@ -402,7 +432,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 2
             },
             {
                 "question": "Khái niệm “đỗ xe” được hiểu như thế nào là đúng quy tắc giao thông?",
@@ -416,7 +447,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 3
             },
             {
                 "question": "Khái niệm “đường cao tốc” được hiểu như thế nào là đúng?",
@@ -438,7 +470,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 3
             },
             {
                 "question": "Hành vi nào dưới đây bị nghiêm cấm?",
@@ -460,7 +493,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 3
             },
             {
                 "question": "Hành vi đưa xe cơ giới, xe máy chuyên dùng không bảo đảm tiêu chuẩn an toàn kỹ thuật và bảo vệ môi trường vào tham gia giao thông đường bộ có bị nghiêm cấm hay không?",
@@ -482,7 +516,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 3
             },
             {
                 "question": "Cuộc đua xe chỉ được thực hiện khi nào?",
@@ -500,7 +535,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 3
             },
             {
                 "question": "Người điều khiển phương tiện giao thông đường bộ mà trong cơ thể có chất ma túy có bị nghiêm cấm hay không?",
@@ -518,7 +554,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 3
             },
             {
                 "question": " Việc lái xe mô tô, ô tô, máy kéo ngay sai khi uống rượu, bia có được phép không?",
@@ -536,7 +573,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 3
             },
             {
                 "question": " Người điều khiển ô tô, mô tô, máy kéo trên đường mà trong máu hoặc hơi thở có nồng độ cồn có bị nghiêm cấm không?",
@@ -554,7 +592,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 3
             },
             {
                 "question": "Sử dụng rượu, bia khi lái xe, nếu bị phát hiện thì bị xử lý như thế nào?",
@@ -572,7 +611,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 3
             },
             {
                 "question": "Theo luật phòng chống tác hại của rượu, bia, đối tượng nào dưới đây bị cấm sử dụng rượu bia khi tham gia giao thông?",
@@ -594,7 +634,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 3
             },
             {
                 "question": "Hành vi xe cơ giới, xe máy chuyên dùng cho người không đủ điều kiện để điều khiển xe tham gia giao thông có được phép hay không?",
@@ -616,7 +657,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 4
             },
             {
                 "question": "Hành vi điều khiển xe cơ giới chạy quá tốc độ quy định, giành đường, vượt ẩu có nghiêm cấm hay không?",
@@ -634,7 +676,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 4
             },
             {
                 "question": "Khi lái xe trên đường, người lái xe cần quan sát và bảo đảm tốc độ phương tiện như thế nào?",
@@ -652,7 +695,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 4
             },
             {
                 "question": "Phương tiện giao thông đường bộ di chuyển với tốc độ thấp hơn phải đi như thế nào?",
@@ -670,7 +714,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 4
             },
             {
                 "question": "Trên đường có nhiều làn đường, khi điều khiển phương tiện ở tốc độ chậm bạn phải đi ở làn đường nào?",
@@ -692,7 +737,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 4
             },
             {
                 "question": "Hành vi vượt xe tại các vị trí có tầm nhìn hạn chế, đường vòng, đầu dóc có bị nghiêm cấm hay không?",
@@ -714,7 +760,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 4
             },
             {
                 "question": "Khi lái xe trong khu đô thị và đông dân cư trừ các khu vực có biển cấm sử dụng còi, người lái xe được sử dụng còi như thế nào trong các trường hợp dưới đây?",
@@ -732,7 +779,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 4
             },
             {
                 "question": "Người lái xe sử dụng đèn như thế nào khi lái xe trong khu đô thị và đông dân cư vào ban đêm?",
@@ -754,7 +802,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 4
             },
             {
                 "question": "Hành vi lắp đặt, sử dụng còi, đèn không đúng thiết kế của nhà sản xuất đối với từng loại xe cơ giới có được phép hay không?",
@@ -772,7 +821,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 4
             },
             {
                 "question": "Trong trường hợp đặc biết, để được lắp đặt, sử dụng còi, đèn khác thiết kế của nhà sản xuất đối với từng loại xe cơ giới bạn phải đảm bảo yêu cầu nào dưới đây?",
@@ -790,7 +840,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 4
             },
             {
                 "question": "Việc sản xuất, mau bán, sử dụng biển số xe cơ giới, xe máy chuyên dùng được quy định như thế nào trong Luật Giao thông đường bộ?",
@@ -808,7 +859,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 5
             },
             {
                 "question": "Người lái xe không được vượt xe khác khi gặp trường hợp nào ghi ở dưới đây?",
@@ -826,7 +878,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 5
             },
             {
                 "question": "Ở phần đường dành cho người đi bộ qua đường, trên cầu, đầu cầu, đường cao tốc, đường hẹp, đường dốc, tại nơi đường bộ giao nhau cùng mức với đường sắt có được quay đầu xe hay không?",
@@ -844,7 +897,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 5
             },
             {
                 "question": "Bạn đang lái xe phía trước có một xe cảnh sát giao thông không phát tín hiệu ưu tiên bạn có được phép vượt hay không?",
@@ -866,7 +920,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 5
             },
             {
                 "question": "Bạn đang lái xe phía trước có một xe cứu thương đang phát tín hiệu ưu tiên có được phép vượt hay không?",
@@ -888,7 +943,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 5
             },
             {
                 "question": "Người lái xe không được quay đầu xe trong các trường hợp nào dưới đây?",
@@ -906,7 +962,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 5
             },
             {
                 "question": "Bạn đang lái xe trong khu dân cư, có đông xe qua lại, nếu muốn quay đầu xe bạn cần làm gì để tránh lại, nếu muốn quay đầu xe bạn cần làm gì để tránh ùn tắc và đảm bảo an toàn giao thông?",
@@ -928,7 +985,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 5
             },
             {
                 "question": "Người lái xe không được lùi xe ở những khu vực nào dưới đây?",
@@ -950,7 +1008,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 5
             },
             {
                 "question": "Người điều khiển phương tiện giao thông trên đường phố có được dừng xe, đỗ xe trên miệng cống thoát nước, miệng hầm của đường điện thoại, điện cao thế, chỗ dành riêng cho xe chữa cháy lấy nước hay không?",
@@ -968,7 +1027,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 5
             },
             {
                 "question": "Khi xe đã kéo 1 xe hoặc xe đã kéo 1 rơ moóc, bạn có được phép kéo thêm xe (kể cả xe thô sơ) hoặc rơ moóc thứ hai hay không?",
@@ -990,7 +1050,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8053b3508005c851369"
+                "category": "65e6b8053b3508005c851369",
+                "topic": 5
             },
             {
                 "question": "Người điều khiển xe mô tô hai bánh, ba bánh, xe gắn máy có được phép sử dụng xe để kéo hoặc đẩy các phương tiện khác khi tham gia giao thông không?",
@@ -3212,7 +3273,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8383b3508005c85136a"
+                "category": "65e6b8383b3508005c85136a",
+                "topic": 1
             },
             {
                 "question": "Trong hoạt động vận tải đường bộ, các hành vi nào dưới đây bị nghiêm cấm?",
@@ -3230,7 +3292,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8383b3508005c85136a"
+                "category": "65e6b8383b3508005c85136a",
+                "topic": 2
             },
             {
                 "question": "Trong hoạt động vận tải khách, những hành vi nào dưới đây bị nghiêm cấm?",
@@ -3252,7 +3315,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8383b3508005c85136a"
+                "category": "65e6b8383b3508005c85136a",
+                "topic": 3
             },
             {
                 "question": "Thời gian làm việc của người lái xe ô tô không được lái xe liên tục quá bao nhiêu giờ trong trường hợp nào dưới đây?",
@@ -3274,7 +3338,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8383b3508005c85136a"
+                "category": "65e6b8383b3508005c85136a",
+                "topic": 4
             },
             {
                 "question": "Thời gian làm việc trong một ngày của người lái xe ô tô không được vượt quá bao nhiêu giờ trong trường hợp dưới đây?",
@@ -3296,7 +3361,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8383b3508005c85136a"
+                "category": "65e6b8383b3508005c85136a",
+                "topic": 5
             },
             {
                 "question": "Người lái xe khách phải chấp hành những quy định nào dưới đây?",
@@ -3681,7 +3747,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8993b3508005c851374"
+                "category": "65e6b8993b3508005c851374",
+                "topic": 1
             },
             {
                 "question": "Người lái xe vận tải hàng hóa cần thực hiện những nhiệm vụ gì ghi ở dưới đây?",
@@ -3695,7 +3762,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8993b3508005c851374"
+                "category": "65e6b8993b3508005c851374",
+                "topic": 2
             },
             {
                 "question": "Người lái xe kinh doanh vận tải cần thực hiện những công việc gì ghi ở dưới đây để thường xuyên rèn luyện nâng cao đạo đức nghề nghiệp?",
@@ -3713,7 +3781,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8993b3508005c851374"
+                "category": "65e6b8993b3508005c851374",
+                "topic": 3
             },
             {
                 "question": "Người lái xe và nhân viên phục vụ trên ô tô vận tải hành khách phải có những trách nhiệm gì theo quy định dưới đây?",
@@ -3735,7 +3804,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8993b3508005c851374"
+                "category": "65e6b8993b3508005c851374",
+                "topic": 4
             },
             {
                 "question": "Khái niệm về văn hóa giao thông được hiểu như thế nào là đúng?",
@@ -3753,7 +3823,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8993b3508005c851374"
+                "category": "65e6b8993b3508005c851374",
+                "topic": 5
             },
             {
                 "question": "Trên làn đường dành cho ô tô có vũng nước lớn, có nhiều người đi xe mô tô trên làn đường bên cạnh, người lái xe ô tô xử lý như thế nào là có văn hóa giao thông?",
@@ -4059,7 +4130,9 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8bb3b3508005c851375"
+                "category": "65e6b8bb3b3508005c851375",
+                "topic": 1
+
             },
             {
                 "question": "Khi vào số để khởi hành xe ô tô có số tự động, người lái xe phải thực hiện các thao tác nào để đảm bảo an toàn?",
@@ -4073,7 +4146,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8bb3b3508005c851375"
+                "category": "65e6b8bb3b3508005c851375",
+                "topic": 2
             },
             {
                 "question": "Khi nhả hệ thống phanh dừng cơ khí điều khiển bằng tay (phanh tay), người lái xe cần phải thực hiện các thao tác nào?",
@@ -4091,7 +4165,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8bb3b3508005c851375"
+                "category": "65e6b8bb3b3508005c851375",
+                "topic": 3
             },
             {
                 "question": "Khi khởi hành ô tô sử dụng hộp số cơ khí trên đường bằng, người lái xe cần thực hiện các thao tác nào theo trình tự dưới đây?",
@@ -4105,7 +4180,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8bb3b3508005c851375"
+                "category": "65e6b8bb3b3508005c851375",
+                "topic": 4
             },
             {
                 "question": "Khi quay đầu xe, người lái xe cần phải quan sát và thực hiện các thao tác nào để đảm bảo an toàn giao thông?",
@@ -4119,7 +4195,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8bb3b3508005c851375"
+                "category": "65e6b8bb3b3508005c851375",
+                "topic": 5
             },
             {
                 "question": "Khi tránh nhau trên đường hẹp, người lái xe cần phải chú ý những điểm nào để đảm bảo an toàn giao thông?",
@@ -4141,7 +4218,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8bb3b3508005c851375"
+                "category": "65e6b8bb3b3508005c851375",
+                "topic": 1
             },
             {
                 "question": "Khi điều khiển ô tô lên dốc cao, người lái xe cần thực hiện các thao tác nào?",
@@ -4155,7 +4233,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8bb3b3508005c851375"
+                "category": "65e6b8bb3b3508005c851375",
+                "topic": 2
             },
             {
                 "question": "Khi điều khiển ô tô xuống dốc cao, người lái xe cần thực hiện các thao tác nào dưới đây để đảm bảo an toàn?",
@@ -4173,7 +4252,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8bb3b3508005c851375"
+                "category": "65e6b8bb3b3508005c851375",
+                "topic": 3
             },
             {
                 "question": "Khi xuống dốc, muốn dừng xe, người lái xe cần thực hiện các thao tác nào để đảm bảo an toàn?",
@@ -4191,7 +4271,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8bb3b3508005c851375"
+                "category": "65e6b8bb3b3508005c851375",
+                "topic": 4
             },
             {
                 "question": "Khi điều khiển xe trên đường vòng, người lái xe cần phải làm gì để đảm bảo an toàn?",
@@ -4205,7 +4286,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8bb3b3508005c851375"
+                "category": "65e6b8bb3b3508005c851375",
+                "topic": 5
             },
             {
                 "question": "Khi điều khiển xe ô tô rẽ phải ở chỗ đường giao nhau, người lái xe cần thực hiện các thao tác nào để đảm bảo an toàn?",
@@ -5064,7 +5146,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8fa3b3508005c851376"
+                "category": "65e6b8fa3b3508005c851376",
+                "topic": 1
             },
             {
                 "question": "Xe ô tô tham gia giao thông đường bộ phải bảo đảm các quy định về chất lượng, an toàn kỹ thuật và bảo vệ môi trường nào ghi dưới đây?",
@@ -5082,7 +5165,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8fa3b3508005c851376"
+                "category": "65e6b8fa3b3508005c851376",
+                "topic": 2
             },
             {
                 "question": "Xe mô tô và xe ô tô tham gia giao thông trên đường bộ phải bắt buộc có đủ bộ phận giảm thanh không?",
@@ -5100,7 +5184,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8fa3b3508005c851376"
+                "category": "65e6b8fa3b3508005c851376",
+                "topic": 3
             },
             {
                 "question": "Xe ô tô tham gia giao thông trên đường bộ phải có đủ các loại đèn gì dưới đây?",
@@ -5136,7 +5221,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b8fa3b3508005c851376"
+                "category": "65e6b8fa3b3508005c851376",
+                "topic": 4
             },
             {
                 "question": "Bánh xe lắp cho xe ô tô phải đảm bảo an toàn kỹ thuật như thế nào dưới đây?",
@@ -5154,7 +5240,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b8fa3b3508005c851376"
+                "category": "65e6b8fa3b3508005c851376",
+                "topic": 5
             },
             {
                 "question": "Âm lượng của còi điện lắp trên ô tô (đo ở độ cao 1,2 mét với khoảng cách 2 mét tính từ đầu xe) là bao nhiêu?",
@@ -5748,7 +5835,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 1
             },
             {
                 "question": "Biển nào cấm ô tô tải?",
@@ -5771,7 +5859,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 1
             },
             {
                 "question": "Biển nào cấm máy kéo?",
@@ -5794,7 +5883,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 1
             },
             {
                 "question": "Biển nào báo hiệu cấm xe mô tô ba bánh đi vào?",
@@ -5813,7 +5903,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 1
             },
             {
                 "question": "Biển nào dưới đây xe gắn máy được phép đi vào?",
@@ -5832,7 +5923,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 1
             },
             {
                 "question": "Biển nào báo hiệu cấm xe mô tô hai bánh đi vào?",
@@ -5851,7 +5943,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 1
             },
             {
                 "question": "Khi gặp biển nào thì xe mô tô hai bánh được đi vào?",
@@ -5874,7 +5967,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 1
             },
             {
                 "question": "Biển nào cho phép ô tô con được vượt?",
@@ -5897,7 +5991,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 1
             },
             {
                 "question": "Biển nào không cho phép ô tô con vượt?",
@@ -5916,7 +6011,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 1
             },
             {
                 "question": "Biển nào cấm ô tô tải vượt?",
@@ -5939,7 +6035,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 1
             },
             {
                 "question": "Biển nào cấm xe tải vượt?",
@@ -5958,7 +6055,9 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+
+                "topic": 2
             },
             {
                 "question": "Biển nào xe ô tô con được phép vượt?",
@@ -5973,7 +6072,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 2
             },
             {
                 "question": "Biển nào cấm quay đầu xe?",
@@ -5996,7 +6096,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 2
             },
             {
                 "question": "Biển nào cấm xe rẽ trái?",
@@ -6015,7 +6116,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 2
             },
             {
                 "question": "Khi gặp biển nào xe được rẽ trái?",
@@ -6034,7 +6136,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 2
             },
             {
                 "question": "Biển nào cấm ô tô rẽ trái?",
@@ -6053,7 +6156,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 2
             },
             {
                 "question": "Biển nào cấm các phương tiện giao thông đường bộ rẽ phải?",
@@ -6076,7 +6180,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 2
             },
             {
                 "question": "Biển nào cấm các phương tiện giao thông đường bộ rẽ trái?",
@@ -6099,7 +6204,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 2
             },
             {
                 "question": "Biển nào dưới đây cấm ô tô quay đầu?",
@@ -6122,7 +6228,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 2
             },
             {
                 "question": "Biển nào dưới đây cấm ô tô quay đầu và rẽ phải?",
@@ -6145,7 +6252,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 2
             },
             {
                 "question": "Biển nào cấm xe taxi mà không cấm các phương tiện khác?",
@@ -6164,7 +6272,9 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 3
+
             },
             {
                 "question": "Biển nào cho phép xe rẽ trái?",
@@ -6183,7 +6293,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 3
             },
             {
                 "question": "Biển nào xe quay đầu không bị cấm?",
@@ -6202,7 +6313,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 3
             },
             {
                 "question": "Biển nào xe được phép quay đầu nhưng không được rẽ trái?",
@@ -6221,7 +6333,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 3
             },
             {
                 "question": "Biển nào là biển 'Cấm đi ngược chiều'?",
@@ -6240,7 +6353,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 3
             },
             {
                 "question": "Biển nào dưới đây các phương tiện không được phép đi vào?",
@@ -6259,7 +6373,9 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+
+                "topic": 3
             },
             {
                 "question": "Gặp biển nào người lái xe không được đỗ xe vào ngày chẵn?",
@@ -6282,7 +6398,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 3
             },
             {
                 "question": "Gặp biển nào người lái xe không được đỗ xe vào ngày lẻ?",
@@ -6305,7 +6422,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 3
             },
             {
                 "question": "Khi gặp biển nào xe ưu tiên theo luật định vẫn phải dừng lại?",
@@ -6324,7 +6442,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 3
             },
             {
                 "question": "Biển nào cấm tất cả các loại xe cơ giới và thô sơ đi lại trên đường, trừ xe ưu tiên theo luật định (nếu đường vẫn cho xe chạy được)?",
@@ -6343,7 +6462,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 3
             },
             {
                 "question": "Biển nào là biển 'Cấm xe chở hàng nguy hiểm'?",
@@ -6362,7 +6482,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 4
             },
             {
                 "question": "Gặp biển nào xe xích lô được phép đi vào?",
@@ -6385,7 +6506,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 4
             },
             {
                 "question": "Gặp biển nào xe lam, xe xích lô máy được phép đi vào?",
@@ -6404,7 +6526,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 4
             },
             {
                 "question": "Biển báo này có ý nghĩa gì?",
@@ -6423,7 +6546,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 4
             },
             {
                 "question": "Biển báo này có ý nghĩa như thế nào?",
@@ -6438,7 +6562,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 4
             },
             {
                 "question": "Khi gặp các biển này xe ưu tiên theo luật định (có tải trọng hay chiều cao toàn bộ vượt quá chỉ số ghi trên biển) có được phép đi qua hay không?",
@@ -6453,7 +6578,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 4
             },
             {
                 "question": "Biển nào hạn chế chiều cao của xe và hàng?",
@@ -6472,7 +6598,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 4
             },
             {
                 "question": "Biển số 2 có ý nghĩa như thế nào?",
@@ -6487,7 +6614,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 4
             },
             {
                 "question": "Biển số 3 có ý nghĩa như thế nào?",
@@ -6506,7 +6634,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 4
             },
             {
                 "question": "Biển nào cấm máy kéo kéo theo rơ moóc?",
@@ -6525,7 +6654,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 4
             },
             {
                 "question": "Khi gặp biển số 1, xe ô tô tải có được đi vào không?",
@@ -6540,7 +6670,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 5
             },
             {
                 "question": "Biển nào không có hiệu lực đối với ô tô tải không kéo moóc?",
@@ -6563,7 +6694,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 5
             },
             {
                 "question": "Biển nào cấm máy kéo?",
@@ -6586,7 +6718,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 5
             },
             {
                 "question": "Khi gặp biển này, xe mô tô ba bánh có được phép rẽ trái hoặc rẽ phải hay không?",
@@ -6601,7 +6734,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 5
             },
             {
                 "question": "Biển này có hiệu lực đối với xe mô tô hai, ba bánh không?",
@@ -6616,7 +6750,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 5
             },
             {
                 "question": "Biển này có ý nghĩa gì?",
@@ -6635,7 +6770,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 5
             },
             {
                 "question": "Biển phụ đặt dưới biển cấm bóp còi có ý nghĩa gì?",
@@ -6654,7 +6790,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 5
             },
             {
                 "question": "Chiều dài đoạn đường 500 m từ nơi đặt biển này, người lái xe có được phép bấm còi không?",
@@ -6669,7 +6806,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 5
             },
             {
                 "question": "Biển nào xe mô tô hai bánh được đi vào?",
@@ -6688,7 +6826,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 5
             },
             {
                 "question": "Biển nào xe mô tô hai bánh không được đi vào?",
@@ -6707,7 +6846,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9153b3508005c851377"
+                "category": "65e6b9153b3508005c851377",
+                "topic": 5
             },
             {
                 "question": "Ba biển này có hiệu lực như thế nào?",
@@ -9282,7 +9422,8 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.09.05.png?alt=media&token=2398dfbc-0de3-4806-b60f-bd55e9174258",
-                "category": "65e6b9383b3508005c851378"
+                "category": "65e6b9383b3508005c851378",
+                "topic": 1
             },
             {
                 "question": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
@@ -9305,7 +9446,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9383b3508005c851378"
+                "category": "65e6b9383b3508005c851378",
+                "topic": 1
             },
             {
                 "question": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
@@ -9328,7 +9470,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9383b3508005c851378"
+                "category": "65e6b9383b3508005c851378",
+                "topic": 1
             },
             {
                 "question": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
@@ -9351,7 +9494,8 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.00.36.png?alt=media&token=95e853c5-0a74-4630-a058-6d58db317a8f",
-                "category": "65e6b9383b3508005c851378"
+                "category": "65e6b9383b3508005c851378",
+                "topic": 1
             },
             {
                 "question": "Xe nào phải nhường đường trong trường hợp này?",
@@ -9366,7 +9510,8 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9383b3508005c851378"
+                "category": "65e6b9383b3508005c851378",
+                "topic": 1
             },
             {
                 "question": "Trường hợp này xe nào được quyền đi trước?",
@@ -9381,7 +9526,8 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.00.49.png?alt=media&token=ecd0ef1e-f204-4953-89e1-17aa3a658673",
-                "category": "65e6b9383b3508005c851378"
+                "category": "65e6b9383b3508005c851378",
+                "topic": 1
             },
             {
                 "question": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
@@ -9400,7 +9546,8 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.05.49.png?alt=media&token=cc9a2231-42c8-488c-93fd-e793f882c142",
-                "category": "65e6b9383b3508005c851378"
+                "category": "65e6b9383b3508005c851378",
+                "topic": 1
             },
             {
                 "question": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
@@ -9419,7 +9566,8 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.05.55.png?alt=media&token=e2866309-67dc-4cc7-ad06-656cb83c2451",
-                "category": "65e6b9383b3508005c851378"
+                "category": "65e6b9383b3508005c851378",
+                "topic": 1
             },
             {
                 "question": "Xe nào được quyền đi trước trong trường hợp này?",
@@ -9434,7 +9582,8 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
-                "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.06.00.png?alt=media&token=dac5866f-4fa6-4512-af52-97ba2f82044b"
+                "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.06.00.png?alt=media&token=dac5866f-4fa6-4512-af52-97ba2f82044b",
+                "topic": 1
             },
             {
                 "question": "Xe nào phải nhường đường đi cuối cùng qua nơi giao nhau này?",
@@ -9453,7 +9602,8 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.06.06.png?alt=media&token=e9b90d71-1a21-482f-a4e4-1b6d91c28c12",
-                "category": "65e6b9383b3508005c851378"
+                "category": "65e6b9383b3508005c851378",
+                "topic": 1
             },
             {
                 "question": "Xe nào phải nhường đường là đúng quy tắc giao thông?",
@@ -9468,6 +9618,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 2,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.06.15.png?alt=media&token=ad45ba3e-63c8-40b6-b39f-b7ace096487f"
             },
             {
@@ -9483,6 +9634,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 2,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.06.21.png?alt=media&token=4fb20b2e-d882-475c-84e3-b25205d35f42"
             },
             {
@@ -9498,6 +9650,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 2,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.14.00.png?alt=media&token=1996964b-f9f3-4768-8f67-845cc73b3281"
             },
             {
@@ -9517,6 +9670,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 2,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.14.06.png?alt=media&token=623f1684-62ab-47a1-b3fb-86e196727eb6"
             },
             {
@@ -9532,6 +9686,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 2,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.14.13.png?alt=media&token=74ca6526-c72e-419e-a0b9-f7bd093dcca1"
             },
             {
@@ -9555,6 +9710,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 2,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.14.17.png?alt=media&token=5269b386-8cdd-4efd-87ce-be7e0edf0961"
             },
             {
@@ -9574,6 +9730,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 2,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.14.25.png?alt=media&token=8bda2365-1b70-4241-917f-207ffa6e9182"
             },
             {
@@ -9597,6 +9754,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 2,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.14.31.png?alt=media&token=ccfb00b4-18d5-4824-b3b0-4b4088e9fc75"
             },
             {
@@ -9620,6 +9778,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 2,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.27.17.png?alt=media&token=f0085646-9670-414b-987c-df0effda8b53"
             },
             {
@@ -9639,6 +9798,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 2,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.27.22.png?alt=media&token=c90d6487-695a-4c4a-881a-381882a2c1d8"
             },
             {
@@ -9658,6 +9818,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 3,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.27.28.png?alt=media&token=a45b4fac-1301-4754-a87d-1dff80a3a8ee"
             },
             {
@@ -9681,6 +9842,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 3,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.27.34.png?alt=media&token=8fab8032-2671-4c0f-9f0e-144c0d92dc53"
             },
             {
@@ -9704,6 +9866,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 3,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.27.39.png?alt=media&token=a3f868ca-2dba-4899-a887-fcfa5f48276d"
             },
             {
@@ -9719,6 +9882,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 3,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.27.45.png?alt=media&token=96430b26-1f4e-453b-bc51-f5d371ddcf82"
             },
             {
@@ -9734,6 +9898,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 3,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.31.59.png?alt=media&token=a6926fe9-bf27-46bf-bb66-76586bcf6138"
             },
             {
@@ -9757,6 +9922,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 3,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.32.04.png?alt=media&token=43395428-64bf-4430-9c7b-91e52de3a537"
             },
             {
@@ -9776,6 +9942,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 3,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.32.10.png?alt=media&token=5d29467f-1ef1-4ea6-86c6-48a583b355b7"
             },
             {
@@ -9795,6 +9962,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 3,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.32.15.png?alt=media&token=c3197650-7a6b-4e4b-9692-45b0dc758bae"
             },
             {
@@ -9810,6 +9978,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 3,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.32.22.png?alt=media&token=64b8872a-cbfa-40b5-bc95-3606df0d0582"
             },
             {
@@ -9825,6 +9994,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 3,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.32.28.png?alt=media&token=ef4428d6-69a7-489f-a825-f644554381ba"
             },
             {
@@ -9839,7 +10009,7 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": true
                     }
                 ],
-                "category": "65e6b9383b3508005c851378",
+                "category": "65e6b9383b3508005c851378", "topic": 4,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.36.14.png?alt=media&token=0e774a2b-0196-4453-b14c-ecdc47c30e6b"
             },
             {
@@ -9855,6 +10025,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 4,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.36.20.png?alt=media&token=5cc103c9-390d-4cdc-8549-2e9399c31f36"
             },
             {
@@ -9878,6 +10049,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 4,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.36.25.png?alt=media&token=e819cd48-06ef-4a3c-a624-0012c47213a4"
             },
             {
@@ -9901,6 +10073,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 4,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.36.31.png?alt=media&token=a0de3e56-b480-4b88-843f-fb70e7c7ea0f"
             },
             {
@@ -9924,6 +10097,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 4,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.36.37.png?alt=media&token=36c333e2-21b1-4b60-812f-80def3e88247"
             },
             {
@@ -9939,6 +10113,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic": 4,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.36.42.png?alt=media&token=223510ab-bbae-4732-ab97-1c33b037e2f7"
             },
             {
@@ -9961,7 +10136,7 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9383b3508005c851378",
+                "category": "65e6b9383b3508005c851378", "topic": 4,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.40.34.png?alt=media&token=eca1e675-c845-4e37-a61d-94c2bbf48678"
             },
             {
@@ -9984,7 +10159,7 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9383b3508005c851378",
+                "category": "65e6b9383b3508005c851378", "topic": 4,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.40.40.png?alt=media&token=d2471c5c-5aae-41ef-a271-99bb7fa74925"
             },
             {
@@ -9999,7 +10174,7 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9383b3508005c851378",
+                "category": "65e6b9383b3508005c851378", "topic": 4,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.40.45.png?alt=media&token=c1ac6cd5-7e8f-424e-a573-cd02382f72ad"
             },
             {
@@ -10013,7 +10188,7 @@ questionRouter.post('/', async (req, res) => {
                         "text": "Vi phạm.",
                         "isCorrect": true
                     }
-                ],
+                ], "topic": 4,
                 "category": "65e6b9383b3508005c851378",
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.40.52.png?alt=media&token=6a22e343-0972-4f2d-a0cd-b0f4d72dbbdd"
             },
@@ -10037,7 +10212,7 @@ questionRouter.post('/', async (req, res) => {
                         "isCorrect": false
                     }
                 ],
-                "category": "65e6b9383b3508005c851378",
+                "category": "65e6b9383b3508005c851378","topic":5,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.40.58.png?alt=media&token=f1b5cd50-2575-4f62-bd7c-dc41ed927320"
             },
             {
@@ -10057,6 +10232,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic":5,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.41.04.png?alt=media&token=e8ab3a17-9603-4d56-975b-35a609628de7"
             },
             {
@@ -10080,6 +10256,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic":5,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.45.14.png?alt=media&token=8f10f0d1-412f-44dc-9d7b-5a0ba920c836"
             },
             {
@@ -10095,6 +10272,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic":5,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.45.22.png?alt=media&token=d8e6257a-864a-4695-82e5-c775fe4190ad"
             },
             {
@@ -10114,6 +10292,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic":5,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.45.28.png?alt=media&token=fdadeb36-8458-4065-8024-895119160759"
             },
             {
@@ -10133,6 +10312,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic":5,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.45.33.png?alt=media&token=62034434-715e-49af-9c4e-03538c369a97"
             },
             {
@@ -10152,6 +10332,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic":5,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.45.38.png?alt=media&token=829ec67b-7611-4563-80a3-96633c948fea"
             },
             {
@@ -10171,6 +10352,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic":5,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.45.44.png?alt=media&token=115aeaa3-e04d-4a50-bb31-863210615531"
             },
             {
@@ -10190,6 +10372,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic":5,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.50.21.png?alt=media&token=bc1a17ee-68ac-44c6-99a5-551a6b445306"
             },
             {
@@ -10213,6 +10396,7 @@ questionRouter.post('/', async (req, res) => {
                     }
                 ],
                 "category": "65e6b9383b3508005c851378",
+                "topic":5,
                 "img": "https://firebasestorage.googleapis.com/v0/b/mobile-7a7e6.appspot.com/o/Screenshot%202024-03-07%20at%2019.50.26.png?alt=media&token=7b711d7c-83b6-4cb2-8879-7cdd555b0cc6"
             },
             {
